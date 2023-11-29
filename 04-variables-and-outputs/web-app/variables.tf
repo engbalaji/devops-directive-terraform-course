@@ -6,6 +6,12 @@ variable "region" {
   default     = "us-east-1"
 }
 
+variable "vpc_id" {
+  description = "VPC ID"
+  type        = string
+  default     = "vpc-0a1c5cada03038204"
+}
+
 # EC2 Variables
 
 variable "ami" {
