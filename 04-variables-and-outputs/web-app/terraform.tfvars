@@ -1,4 +1,4 @@
-bucket_prefix = "BMcreatingthis"
+bucket_prefix = "bmthroughterraform"
 domain        = "Mariyappan.com"
 db_name       = "mybmdb"
 db_user       = "bmtiger"
