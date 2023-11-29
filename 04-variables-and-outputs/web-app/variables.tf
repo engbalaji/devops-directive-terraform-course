@@ -12,6 +12,12 @@ variable "vpc_id" {
   default     = "vpc-0a1c5cada03038204"
 }
 
+variable "subnet_id" {
+  description = "SUBNET ID"
+  type        = string
+  default     = "subnet-0f1e42859f3ad43c3"
+}
+
 # EC2 Variables
 
 variable "ami" {

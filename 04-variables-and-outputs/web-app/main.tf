@@ -68,7 +68,8 @@ data "aws_vpc" "selected" {
   id = var.vpc_id
 }
 
-data "aws_subnet_ids" "subnet-0f1e42859f3ad43c3" {
+data "aws_subnet_ids" "selected" {
+  id = var.subnet_id
   vpc_id = data.aws_vpc.selected.id
 }
 
