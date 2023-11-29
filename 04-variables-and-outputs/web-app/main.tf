@@ -219,7 +219,8 @@ resource "aws_security_group_rule" "allow_alb_all_outbound" {
 resource "aws_lb" "load_balancer" {
   name               = "web-app-lb"
   load_balancer_type = "application"
-  subnets            = var.subnet1_id, var.subnet2_id
+  subnet1 = var.subnet1_id
+  subnet2 = var.subnet2_id
   security_groups    = [aws_security_group.alb.id]
 
 }
