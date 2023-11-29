@@ -105,10 +105,10 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "bucket_crypto_con
   }
 }
 
-data "aws_subnet_ids" "selected" {
-  id = var.subnet2_id
-  vpc_id = data.aws_vpc.selected.id
-}
+#data "aws_subnet_ids" "selected" {
+#  id = var.subnet2_id
+#  vpc_id = data.aws_vpc.selected.id
+#}
 
 resource "aws_security_group" "instances" {
   name = var.security_group1_id
@@ -219,7 +219,7 @@ resource "aws_security_group_rule" "allow_alb_all_outbound" {
 resource "aws_lb" "load_balancer" {
   name               = "web-app-lb"
   load_balancer_type = "application"
-  subnets            = data.aws_vpc.selected.id
+  subnets            = var.subnet2_id
   security_groups    = [aws_security_group.alb.id]
 
 }
