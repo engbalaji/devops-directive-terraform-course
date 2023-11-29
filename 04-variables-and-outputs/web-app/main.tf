@@ -109,7 +109,7 @@ resource "aws_lb_target_group" "instances" {
   name     = "example-target-group"
   port     = 8080
   protocol = "HTTP"
-  vpc_id   = data.aws_vpc.default_vpc.id
+  vpc_id   = data.aws_vpc.selected.id
 
   health_check {
     path                = "/"
