@@ -21,22 +21,63 @@ provider "aws" {
   region = var.region
 }
 
+#resource "aws_instance" "instance_1" {
+#  ami             = var.ami
+#  instance_type   = var.instance_type
+#  security_groups = [aws_security_group.instances.name]
+#  user_data       = <<-EOF
+#              #!/bin/bash
+#              echo "Hello, World 1" > index.html
+#              python3 -m http.server 8080 &
+#              EOF
+#}
+
+#resource "aws_instance" "instance_2" {
+#  ami             = var.ami
+#  instance_type   = var.instance_type
+#  security_groups = [aws_security_group.instances.name]
+#  user_data       = <<-EOF
+#              #!/bin/bash
+#              echo "Hello, World 2" > index.html
+#              python3 -m http.server 8080 &
+#              EOF
+#}
+
+data "aws_vpc" "selected" {
+  id = var.vpc_id
+
+}
+
 resource "aws_instance" "instance_1" {
-  ami             = var.ami
-  instance_type   = var.instance_type
-  security_groups = [aws_security_group.instances.name]
-  user_data       = <<-EOF
+  ami           = var.ami_id
+  instance_type = var.instance_type
+
+  subnet_id    = var.subnet1_id
+  vpc_security_group_ids = [var.security_group1_id]
+  key_name     = var.my-key-pair
+
+  tags = {
+    Name = var.instance1_name
+  }
+    user_data       = <<-EOF
               #!/bin/bash
-              echo "Hello, World 1" > index.html
+              echo "Hello, World 2" > index.html
               python3 -m http.server 8080 &
               EOF
 }
 
 resource "aws_instance" "instance_2" {
-  ami             = var.ami
-  instance_type   = var.instance_type
-  security_groups = [aws_security_group.instances.name]
-  user_data       = <<-EOF
+  ami           = var.ami_id
+  instance_type = var.instance_type
+
+  subnet_id    = var.subnet2_id
+  vpc_security_group_ids = [var.security_group1_id]
+  key_name     = var.my-key-pair
+
+  tags = {
+    Name = var.instance2_name
+  }
+    user_data       = <<-EOF
               #!/bin/bash
               echo "Hello, World 2" > index.html
               python3 -m http.server 8080 &
@@ -64,17 +105,13 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "bucket_crypto_con
   }
 }
 
-data "aws_vpc" "selected" {
-  id = var.vpc_id
-}
-
 data "aws_subnet_ids" "selected" {
-  id = var.subnet_id
+  id = var.subnet2_id
   vpc_id = data.aws_vpc.selected.id
 }
 
 resource "aws_security_group" "instances" {
-  name = "Bm-test-sg-2"
+  name = var.security_group1_id
 }
 
 resource "aws_security_group_rule" "allow_http_inbound" {

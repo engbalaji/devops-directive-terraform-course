@@ -1,9 +1,33 @@
 # General Variables
-
-variable "region" {
-  description = "Default region for provider"
-  type        = string
-  default     = "us-east-1"
+variable "aws_region" {
+  default = "us-east-1"
+}
+variable "ami_id" {
+  default = "ami-0df435f331839b2d6"
+}
+variable "instance_type" {
+  default = "t2.micro"
+}
+variable "subnet1_id" {
+  default = "subnet-0f1e42859f3ad43c3"
+}
+variable "subnet2_id" {
+  default = "subnet-0f1e42859f3ad43c3"
+}
+variable "security_group1_id" {
+  default = "sg-06bc9cdd724e815b1"
+}
+variable "security_group2_id" {
+  default = "sg-048baa2ebfebb7aae"
+}
+variable "instance1_name" {
+  default = "pltest1"
+}
+variable "instance2_name" {
+  default = "pltest2"
+}
+variable "my-key-pair" {
+  default = "Balaji Mariyappan"
 }
 
 variable "vpc_id" {
@@ -12,25 +36,24 @@ variable "vpc_id" {
   default     = "vpc-0a1c5cada03038204"
 }
 
-variable "subnet_id" {
-  description = "SUBNET ID"
-  type        = string
-  default     = "subnet-0f1e42859f3ad43c3"
-}
+#variable "subnet_id" {
+#  description = "SUBNET ID"
+#  type        = string
+#  default     = "subnet-0f1e42859f3ad43c3"
+#}
 
 # EC2 Variables
+#variable "ami" {
+#  description = "Amazon machine image to use for ec2 instance"
+#  type        = string
+#  default     = "ami-0b0dcb5067f052a63" # Ubuntu 20.04 LTS // us-east-1
+#}
 
-variable "ami" {
-  description = "Amazon machine image to use for ec2 instance"
-  type        = string
-  default     = "ami-0b0dcb5067f052a63" # Ubuntu 20.04 LTS // us-east-1
-}
-
-variable "instance_type" {
-  description = "ec2 instance type"
-  type        = string
-  default     = "t2.micro"
-}
+#variable "instance_type" {
+#  description = "ec2 instance type"
+#  type        = string
+#  default     = "t2.micro"
+#}
 
 # S3 Variables
 
