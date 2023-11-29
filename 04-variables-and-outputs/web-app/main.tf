@@ -69,12 +69,12 @@ data "aws_vpc" "selected" {
   id = var.vpc_id
 }
 
-data "aws_subnet_ids" "default_subnet" {
+data "aws_subnet_ids" "subnet-0f1e42859f3ad43c3" {
   vpc_id = data.aws_vpc.selected.id
 }
 
 resource "aws_security_group" "instances" {
-  name = "instance-security-group"
+  name = "Bm-test-sg-2"
 }
 
 resource "aws_security_group_rule" "allow_http_inbound" {
