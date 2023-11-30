@@ -110,13 +110,13 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "bucket_crypto_con
   vpc_id = data.aws_vpc.selected.id
 }
 
-resource "aws_security_group" "instances" {
-  name = var.security_group1_id
+data "aws_security_group" "instances" {
+  id = var.security_group1_id
 }
 
 resource "aws_security_group_rule" "allow_http_inbound" {
   type              = "ingress"
-  security_group_id = aws_security_group.instances.id
+  security_group_id = data.aws_security_group.instances.id
 
   from_port   = 8080
   to_port     = 8080

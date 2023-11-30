@@ -15,10 +15,10 @@ variable "subnet2_id" {
   default = "subnet-0f1e42859f3ad43c3"
 }
 variable "security_group1_id" {
-  default = "sg-06bc9cdd724e815b1"
+  default = "sg-0923ec6647d12bf6e"
 }
 variable "security_group2_id" {
-  default = "sg-048baa2ebfebb7aae"
+  default = "sg-06bc9cdd724e815b1"
 }
 variable "instance1_name" {
   default = "pltest1"
